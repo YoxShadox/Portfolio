@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="rev.css">
+</head>
+
+<body>
+    <header class="header">
+        <a href="" class="logo">Portfolio</a>
+        <nav class="navbar">
+            <a href="index.html" style="--i:1">Home</a>
+            <a href="#reviews" id="reviewsLink" style="--i:2">Reviews</a>
+            <a href="#login" id="loginLink" style="--i:3">Login</a>
+            <a href="#addReview" id="addReviewLink" style="--i:4;">Add Review</a>
+            <a href="#" id="logoutLink" style="--i:5; display: none;">Logout</a>
+        </nav>
+    </header>
+
+    <!-- Login Section -->
+    <section id="login" style="display: none;">
+        <div class="login-form">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit" id="loginButton">Login</button>
+            </form>
+            <p id="loginError" style="color: red;"></p>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews">
+        <div class="reviews-content">
+            <h2>Reviews</h2>
+            <div id="reviewsList">
+                <!-- Reviews will be dynamically added here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Admin Panel -->
+    <section id="adminPanel" style="display: none;">
+        <h2>Admin Panel</h2>
+        <p>Welcome, Admin!</p>
+        <div id="adminReviewsList">
+            <!-- Admin reviews will be dynamically added here -->
+        </div>
+    </section>
+
+    <!-- Add Review Section -->
+    <section id="addReview" style="display: none;">
+        <div class="review-form">
+            <h2>Add Review</h2>
+            <form id="reviewForm">
+                <input type="text" id="name" placeholder="Name" required>
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="file" id="photo" accept="image/*" required>
+                <textarea id="review" placeholder="Your review" required></textarea>
+                <button type="submit" id="submitReviewButton">Submit Review</button>
+            </form>
+        </div>
+    </section>
+
+    <script src="rev.js"></script>
+</body>
+
+</html>

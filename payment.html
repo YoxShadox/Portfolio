@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pay Me (Test Mode)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+    input, button {
+      padding: 12px 20px;
+      font-size: 1rem;
+      border-radius: 6px;
+      margin: 12px;
+    }
+    button {
+      background-color: #008cff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+    <h1>Pay Me</h1>
+  <p>Enter the amount and your contact number to pay.</p>
+
+  <input type="number" id="amount" placeholder="Amount in ₹" />
+  <br/>
+  <input type="tel" id="contact" placeholder="Contact Number" maxlength="10" />
+  <br/>
+  <button onclick="payNow()">Pay Now</button>
+  </div>
+
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script>
+    function payNow() {
+      const amount = document.getElementById("amount").value;
+      const contact = document.getElementById("contact").value;
+      if (!amount || amount < 1) {
+        alert("Please enter a valid amount.");
+        return;
+      }
+
+      if (!contact || contact.length !== 10 || isNaN(contact)) {
+        alert("Please enter a valid 10-digit contact number.");
+        return;
+      }
+
+      const options = {
+        key: "rzp_test_a9eR9bmstcXMls", 
+        amount: amount * 100,
+        currency: "INR",
+        name: "Your Portfolio",
+        description: "Test Payment",
+        handler: function (response) {
+          alert("✅ Payment Successful!\nPayment ID: " + response.razorpay_payment_id);
+        },
+        prefill: {
+          name: "Client",
+          email: "client@example.com",
+          contact: contact
+        },
+        theme: {
+          color: "#008cff"
+        }
+      };
+
+      const rzp = new Razorpay(options);
+      rzp.open();
+    }
+  </script>
+</body>
+</html>
